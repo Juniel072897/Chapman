@@ -1,0 +1,164 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="hero">
+  <div class="hero__overlay"></div>
+
+  <div class="container container--wide hero__container">
+    <!-- Left: Headline + copy + CTA -->
+    <div class="hero__copy">
+      <h1>Plumbing Services</h1>
+
+      <p class="hero__lead">
+        <a class="brand" href="/about">Chapman Plumbing</a> is an experienced local family master plumber. Our decades of experience in the plumbing and at the same time living in the area combine to serve your family home needs.
+      </p>
+
+      <div class="hero__ctas">
+        <a href="tel:2052365014" class="btn btn--green">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.13.98.35 1.93.66 2.84a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.24-1.24a2 2 0 0 1 2.11-.45c.91.31 1.86.53 2.84.66A2 2 0 0 1 22 16.92Z" fill="currentColor"/>
+          </svg>
+          Call Us Now
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Form card -->
+    <div class="hero__formCard">
+      <div class="hero__cardTop">
+        <img src="/images/chapman-logo.png" alt="Chapman Plumbing" />
+      </div>
+
+      <form class="hero__form" onsubmit="event.preventDefault();">
+        <div class="grid grid--2">
+          <input type="text" name="firstName" placeholder="First Name" required />
+          <input type="text" name="lastName" placeholder="Last Name" required />
+        </div>
+        <div class="grid grid--2">
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="tel" name="phone" placeholder="Phone" required />
+        </div>
+        <input type="text" name="address" placeholder="Address" />
+        <textarea name="message" rows="5" placeholder="Tell us about why you're reaching out to us..."></textarea>
+        <button type="submit" class="btn btn--green">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Keep container aligned with header’s left rail */
+  :root{
+    --container-pad: 16px;
+    --container-max-wide: 1360px; /* must match your Header */
+  }
+  .container.container--wide.hero__container{
+    width: min(100% - (var(--container-pad) * 2), var(--container-max-wide)) !important;
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  /* Background + overlay */
+  .hero{
+    position: relative;
+    isolation: isolate;
+    background: center/cover no-repeat url('/images/Serviceareasimage.jpg');
+    min-height: 68vh;
+    display: flex;
+    align-items: center;
+    padding-block: 48px;
+  }
+  .hero__overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.33);
+    z-index: 0;
+  }
+
+  /* Two-column layout (left text, right form) */
+  .hero__container{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 48px;
+    align-items: center;         /* center vertically like your screenshot */
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  @media (max-width: 1024px){
+    .hero__container{ grid-template-columns: 1fr; }
+  }
+
+  /* Left copy */
+  .hero__copy{
+    max-width: 720px;
+    text-align: left;
+  }
+  .hero__copy h1{
+    margin: 0 0 12px;
+  }
+  .hero__lead{
+    margin: 0 0 16px;
+    opacity: .95;
+  }
+  .brand{
+    color: var(--color-primary-red, #b81e1e);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .hero__ctas{ display:flex; gap:.75rem; flex-wrap:wrap; }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.8rem 2rem; border:none; border-radius:.375rem;
+    text-decoration:none; cursor:pointer;
+  }
+  
+.btn--green {
+  background: var(--green);
+  color: #fff;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn--green:hover {
+  background: #3fb74c;   /* hover color */
+  color: #fff;
+  transform: translateY(-1px); /* optional subtle lift */
+}
+
+  /* Right form card (as you had) */
+  .hero__formCard{
+    background: rgba(255,255,255,.96);
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 6px;
+    box-shadow: 0 18px 60px rgba(0,0,0,.18);
+    overflow: hidden;
+  }
+  .hero__cardTop{
+    padding: 10px 18px;
+    border-top: 4px solid var(--color-primary-red, #b81e1e);
+    display:flex; justify-content:center; align-items:center;
+  }
+  .hero__cardTop img{ height: 48px; object-fit: contain; }
+
+  .hero__form{
+    padding: 16px 18px 20px;
+    display:grid; gap:12px;
+  }
+  .grid{ display:grid; gap:12px; }
+  .grid--2{ grid-template-columns: 1fr 1fr; }
+  @media (max-width:520px){ .grid--2{ grid-template-columns: 1fr; } }
+
+  .hero__form input,
+  .hero__form textarea{
+    width:100%; border:1px solid #d8dde6; border-radius:6px;
+    padding:12px 14px; background:#fff; outline:none;
+  }
+  .hero__form input:focus,
+  .hero__form textarea:focus{
+    border-color:#9bb7ff;
+    box-shadow:0 0 0 3px rgba(59,130,246,.15);
+  }
+</style>

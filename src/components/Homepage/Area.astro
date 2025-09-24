@@ -1,0 +1,135 @@
+---
+/**
+ * Areas.astro
+ * Section: "Areas We Serve in Alabama"
+ * - Uses global button styles and color variables from your global.css
+ */
+
+const title = "Areas We Serve in Alabama"; // H2
+const phoneHref = "tel:+12055550123";      // ← replace with your real number
+const mapSrc = "/images/almap.jpg";        // ← replace with your map image
+
+const col1 = [
+  "Birmingham","Hoover","Shannon","Mountain Brook","Bessemer",
+  "Vestavia","Cahaba Heights","Indian Spring Village","Midfield",
+];
+
+const col2 = [
+  "Fultondale","Gardendale","Trussville","Homewood","Fairfield",
+  "Wine Ridge","Brighton","Hueytown",
+];
+---
+
+<section class="areas">
+  <div class="areas__container">
+    <div class="areas__content fade-item fade-1">
+      <h2 class="areas__title">{title}</h2>
+
+      <div class="areas__lists">
+        <ul class="areas__list">
+          {col1.map((city) => <li>{city}</li>)}
+        </ul>
+        <ul class="areas__list">
+          {col2.map((city) => <li>{city}</li>)}
+        </ul>
+      </div>
+
+      <a href={phoneHref} class="btn btn-success areas__cta">Call Us Now</a>
+    </div>
+
+    <aside class="areas__map fade-item fade-2" aria-label="Coverage map">
+      <img src={mapSrc} alt="Map of our service areas in Alabama" loading="lazy" decoding="async" />
+    </aside>
+  </div>
+
+  <script is:inline>
+    document.addEventListener('astro:page-load', () => {
+      const section = document.querySelector('.areas');
+      if (!section) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            section.classList.add('in-view');
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.25 });
+      io.observe(section);
+    });
+  </script>
+</section>
+
+<style>
+  .areas{
+    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45)), #1f2937;
+    color: #fff;
+    padding-block: var(--space-10, 4rem);
+  }
+
+  .areas__container{
+    width: min(100% - (var(--container-pad, 16px)*2), var(--container-max-wide, 1360px));
+    margin-inline: auto;
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+
+  .areas__title{ margin: 0 0 var(--space-5, 20px) 0; color:#fff; }
+
+  .areas__lists{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem 2.5rem;
+    margin-bottom: var(--space-6, 24px);
+  }
+
+  .areas__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: .5rem;
+  }
+  .areas__list li{
+    display: grid;
+    grid-template-columns: 1.1rem 1fr;
+    gap: .5rem;
+    align-items: start;
+  }
+  .areas__list li::before{
+    content: "🔧";
+    color: var(--color-primary-red, #C22D2C);
+    line-height: 1;
+    margin-top: .15rem;
+  }
+
+  .areas__cta{ width: fit-content; }
+
+  /* Map card */
+  .areas__map{
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0.75rem;                 /* small inset so 80% has white frame */
+  }
+  .areas__map img{
+    display: block;
+    border-radius: 7px;
+    width: 80%;                       /* ← 80% size */
+    height: auto;                     /* keep aspect ratio */
+    margin-inline: auto;              /* center it */
+  }
+
+  @media (min-width: 980px){
+    .areas__container{
+      grid-template-columns: 1.05fr 1fr; /* text | map */
+      gap: 2rem;
+    }
+    .areas__lists{ grid-template-columns: 1fr 1fr; }
+    .areas__map{
+      justify-self: end;
+      max-width: 680px;               /* cap the overall card */
+    }
+  }
+
+</style>

@@ -1,0 +1,259 @@
+---
+---
+
+<section class="chapman">
+  <!-- Top: Media + Copy -->
+  <div class="container">
+    <div class="about">
+      <!-- Left media / collage -->
+      <figure class="about__media">
+        <!-- Main collage image -->
+        <img
+          src="/images/chapmanonly.png"
+          alt="Team at work"
+          width="400"
+          height="620"
+          loading="lazy"
+          class="about__img"
+        />
+      
+      </figure>
+
+      <!-- Right copy -->
+      <div class="about__copy">
+        <h2 class="about__title">Chapman Plumbing</h2>
+        <p class="about__lead">
+          Chapman Plumbing is a full-service plumbing contractor providing a complete range of plumbing
+          solutions for both residential and commercial clients. We have a wide variety of options and
+          will meet your needs with the right attitude.
+        </p>
+
+        <div class="about__cards">
+          <!-- Vision -->
+          <article class="card">
+            <header class="card__head">
+              <img src="/images/eye-vision.png" alt="" width="28" height="28" class="card__icon" />
+              <h3>Vision</h3>
+            </header>
+            <p>
+              To be one of the best in Alabama that can provide safe and practical plumbing solutions
+              for the residents and commercial establishments in order to foster healthier and cleaner water
+              in the community.
+            </p>
+          </article>
+
+          <!-- Mission -->
+          <article class="card">
+            <header class="card__head">
+              <img src="/images/mountainflag.png" alt="" width="28" height="28" class="card__icon" />
+              <h3>Mission</h3>
+            </header>
+            <p>
+              To be one of the best in Alabama that can provide safe and practical plumbing solutions
+              for the residents and commercial establishments in order to foster healthier and cleaner water
+              in the community.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="container values">
+    <h2 class="values__title">Our Core Values</h2>
+
+    <div class="values__grid">
+      <!-- Safety -->
+      <article class="vcard">
+        <header class="vcard__head">
+          <img src="/images/safety.png" alt="" width="36" height="36" class="vcard__icon" />
+          <h3>Safety</h3>
+        </header>
+        <ul>
+          <li>We aim to prioritize safety in all our work.</li>
+          <li>Any structural risks or health hazards are taken into account.</li>
+          <li>Safety will never be compromised in the interest of profit or convenience.</li>
+        </ul>
+      </article>
+
+      <!-- Teamwork -->
+      <article class="vcard">
+        <header class="vcard__head">
+          <img src="/images/safety.png" alt="" width="36" height="36" class="vcard__icon" />
+          <h3>Teamwork</h3>
+        </header>
+        <ul>
+          <li>We work as a team with our clients and subcontractors to ensure optimal performance.</li>
+          <li>We empower our men to step up and take responsibility for our work.</li>
+          <li>We cultivate a great attitude and integrity to do the job right.</li>
+        </ul>
+      </article>
+
+      <!-- Customer First -->
+      <article class="vcard">
+        <header class="vcard__head">
+          <img src="/images/Teamwork.png" alt="" width="36" height="36" class="vcard__icon" />
+          <h3>Customer Go First</h3>
+        </header>
+        <ul>
+          <li>We train our men to be empathetic and assertive to the customers’ concerns.</li>
+          <li>We promote an interactive culture between the customer and our men.</li>
+        </ul>
+      </article>
+
+      <!-- Excellence -->
+      <article class="vcard">
+        <header class="vcard__head">
+          <img src="/images/excellence.png" alt="" width="36" height="36" class="vcard__icon" />
+          <h3>We Strive for Excellence</h3>
+        </header>
+        <ul>
+          <li>You call us, we deliver.</li>
+          <li>We only employ trusted and the best in our field.</li>
+          <li>We clean as we go.</li>
+        </ul>
+      </article>
+
+      <!-- Fast & Professional -->
+      <article class="vcard">
+        <header class="vcard__head">
+          <img src="/images/fast.png" alt="" width="36" height="36" class="vcard__icon" />
+          <h3>Fast, Efficient and Professional</h3>
+        </header>
+        <ul>
+          <li>Careful planning is part of the process.</li>
+          <li>We provide options and walk the customer through the project.</li>
+          <li>We always strive to carry out the job for the customers’ long-term satisfaction.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="values__cta">
+      <a href="#services" class="btn btn-primary">Explore Our Plumbing Services</a>
+    </div>
+  </div>
+</section>
+
+<style>
+:root{
+  --container-pad:16px;
+  --container-max:1120px;
+  --red:#dc2626;
+  --red-300:#fca5a5;
+  --muted:#f6f7f8;
+  --border:#e5e7eb;
+}
+
+/* shared container */
+.container{
+  width:min(100% - (var(--container-pad)*2), var(--container-max));
+  margin-inline:auto;
+}
+
+/* ========== TOP (media + copy) ========== */
+.chapman{ padding-block:3rem; }
+.about{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2rem;
+  align-items:start;
+}
+@media (min-width:960px){
+  .about{ grid-template-columns: 520px 1fr; gap:3rem; }
+}
+
+.about__media{
+  position:relative;
+  width:90%;
+  max-width:px;
+  aspect-ratio:1/1;
+}
+.about__img{
+  width:100%; height:100%;
+  object-fit:auto;
+  border-radius:28px;
+}
+.stroke{
+  position:absolute; display:block;
+  pointer-events:none;
+  border-radius:999px;
+  border:6px solid var(--red);
+}
+.stroke--1{ inset:auto auto 40% -24px; width:56%; height:18%; rotate:-25deg; }
+.stroke--2{ inset:10% -18px auto auto; width:36%; height:14%; rotate:35deg; }
+
+/* copy side */
+.about__copy{ display:grid; gap:1rem; }
+.about__title{ color:#111; margin:0; }
+.about__lead{ color:#374151; }
+
+/* Vision/Mission cards */
+.about__cards{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1rem;
+}
+@media (min-width:720px){
+  .about__cards{ grid-template-columns: repeat(2,1fr); }
+}
+.card{
+  background:#fff;
+  border:2px solid var(--red-300);
+  border-radius:10px;
+  padding:1rem 1rem 1.25rem;
+}
+.card__head{
+  display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem;
+}
+.card__icon{ display:block; }
+
+/* ========== VALUES ========== */
+.values{ padding-block:2rem 3rem; text-align:center; }
+.values__title{ color:var(--red); margin-bottom:1.5rem; }
+
+.values__grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1rem;
+  text-align:left;
+}
+@media (min-width:900px){
+  .values__grid{ grid-template-columns: repeat(3,1fr); }
+}
+.vcard{
+  background:#fff;
+  border-radius:10px;
+  border:1px solid var(--border);
+  box-shadow:0 8px 20px rgba(0,0,0,.04);
+  padding:1.25rem 1.25rem;
+}
+.vcard__head{
+  display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem;
+}
+.vcard__icon{ filter: saturate(1.1); }
+.vcard ul{
+  margin:0; padding-left:1.1rem;
+}
+.vcard li{
+  color:#4b5563;
+  line-height:1.5;
+}
+
+/* Primary = green #007F1E */
+.btn-primary{
+  background:#007F1E;
+  
+  color:#fff;
+  margin-top: 50px;
+}
+.btn-primary:hover{
+  background:#3fb74c; /* darker hover */
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(0,127,30,.28);
+}
+.btn-primary:focus-visible{
+  outline:2px solid #27b94a;
+  outline-offset:2px;
+}
+</style>

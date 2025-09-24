@@ -1,0 +1,191 @@
+---
+interface QA { q: string; a: string }
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items?: QA[];
+}
+
+const {
+  title = "Frequently Asked Questions",
+  subtitle = "See some common questions and answers below.",
+  items = [
+    {
+      q: "What Services Does Chapman Plumbing In Alabama Provide?",
+      a: "Full-service residential and commercial plumbing: leak detection and repair, drain cleaning and hydro jetting, water heaters (install/repair), fixture installs, sewer line services, gas line services, inspections, and more."
+    },
+    {
+      q: "Why Is My Water Bill Excessively High?",
+      a: "Hidden leaks, running toilets, dripping faucets, or irrigation issues are common causes. We can perform a quick diagnostic and fix the source to bring the bill back down."
+    },
+    {
+      q: "What Areas Do You Serve?",
+      a: "Greater Birmingham and surrounding communities including Hoover, Vestavia, Homewood, Trussville, Mountain Brook, Bessemer, Hueytown, and more."
+    },
+    {
+      q: "Is Your Work Guaranteed?",
+      a: "Yes. We stand behind our work with a workmanship guarantee. Specific parts may carry a manufacturer warranty as well."
+    },
+    {
+      q: "What Are Your Operating Hours And Where Are You Located?",
+      a: "Standard hours are Monday–Friday, with emergency support available. Call for today’s availability and directions."
+    },
+    {
+      q: "How Can I Schedule An Appointment Or Get More Information?",
+      a: "Give us a call, send a message through our contact form, or book online. We’ll confirm a time that works for you."
+    }
+  ]
+} = Astro.props as Props;
+
+const left = items.filter((_, i) => i % 2 === 0);
+const right = items.filter((_, i) => i % 2 === 1);
+---
+
+<section class="faq-section">
+  <div class="faq-head">
+    <h2>{title}</h2>
+    <p class="faq-sub">{subtitle}</p>
+  </div>
+
+  <div class="faq-grid">
+    <div class="faq-col">
+      {left.map((item) => (
+        <details class="faq" aria-label={item.q}>
+          <summary>
+            <span>{item.q}</span>
+            <svg class="faq__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq__content"><p>{item.a}</p></div>
+        </details>
+      ))}
+    </div>
+
+    <div class="faq-col">
+      {right.map((item) => (
+        <details class="faq" aria-label={item.q}>
+          <summary>
+            <span>{item.q}</span>
+            <svg class="faq__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq__content"><p>{item.a}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+
+  <!-- Enforce single-open across the whole section -->
+  <script is:inline>
+    (function () {
+      const script = document.currentScript;
+      const section = script?.closest('.faq-section');
+      if (!section) return;
+
+      const items = Array.from(section.querySelectorAll('details.faq'));
+
+      // If multiple are open on load, keep only the first
+      const opened = items.filter(d => d.open);
+      if (opened.length > 1) opened.slice(1).forEach(d => d.removeAttribute('open'));
+
+      function closeOthers(except) {
+        items.forEach(d => { if (d !== except) d.removeAttribute('open'); });
+      }
+
+      items.forEach(d => {
+        // Works in all modern browsers
+        d.addEventListener('toggle', () => { if (d.open) closeOthers(d); }, { passive: true });
+
+        // Extra safety for some edge cases (summary click)
+        const s = d.querySelector('summary');
+        s?.addEventListener('click', () => {
+          setTimeout(() => { if (d.open) closeOthers(d); }, 0);
+        }, { passive: true });
+      });
+    })();
+  </script>
+</section>
+
+<style>
+  .faq-section{
+    width: min(100% - (var(--container-pad,16px)*2), var(--container-max,1200px));
+    margin-inline: auto;
+    padding-block: var(--space-10, 64px);
+  }
+
+  .faq-head{ text-align:center; margin-bottom: var(--space-7, 32px); }
+  .faq-sub{ color: var(--color-primary-red, #C22D2C); margin: 0; }
+
+  .faq-grid{ display:grid; grid-template-columns: 1fr; gap: 1rem; }
+  .faq-col{ display:grid; gap: 1rem; }
+
+  /* Card wrapper */
+  .faq{
+    background: var(--color-primary-red, #C22D2C);
+    border-radius: 10px;
+    box-shadow: 0 10px 18px rgba(0,0,0,.08);
+    overflow: clip;
+    color:#fff;
+    transition: background .2s ease, color .2s ease;
+  }
+
+  /* Summary (tab) */
+  .faq summary{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: .9rem 1.1rem;
+    cursor:pointer; list-style:none;
+    color:#fff;                   /* default white on red */
+    background: transparent;      /* inherits red from wrapper */
+    border-radius: 10px;
+    transition: background .2s ease, color .2s ease;
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+
+  /* Hover: light grey + black text */
+  .faq summary:hover{
+    background: #eeeeee;
+    color: #000;
+  }
+
+  /* Open: green tab + white text; content remains white */
+  .faq[open]{ background: var(--color-primary-green, #007F1E); color:#fff; }
+  .faq[open] summary{
+    background: var(--color-primary-green, #007F1E);
+    color:#fff;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .faq__chev{ transition: transform .25s ease; }
+  .faq[open] .faq__chev{ transform: rotate(180deg); }
+
+  /* Content panel: white + black */
+  .faq__content{
+    padding: 0 1.1rem 1rem;
+    background: #fff;
+    color: #000;
+    border-top: 1px solid rgba(0,0,0,.08);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .faq__content p{ margin: 0; color:#000; }
+
+  /* Focus ring */
+  .faq summary:focus-visible{
+    outline:2px solid var(--color-hover-green, #3fb74c);
+    outline-offset:2px;
+  }
+
+  @media (min-width: 980px){
+    .faq-grid{ grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; }
+  }
+
+  /* Entrance animation */
+  @keyframes fadeInUp{ from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none} }
+  .faq-col > .faq{ opacity:0; transform:translateY(16px); animation: fadeInUp .5s ease forwards; }
+  .faq-col > .faq:nth-child(1){ animation-delay:.05s }
+  .faq-col > .faq:nth-child(2){ animation-delay:.10s }
+  .faq-col > .faq:nth-child(3){ animation-delay:.15s }
+</style>

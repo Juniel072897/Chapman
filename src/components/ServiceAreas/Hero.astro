@@ -1,0 +1,136 @@
+---
+/* src/components/Hero.astro */
+---
+
+<section class="hero">
+  <div class="hero__overlay"></div>
+
+  <div class="container container--wide hero__container">
+    <!-- Headline + copy -->
+    <div class="hero__copy">
+      <h1>
+        Birmingham Metro<br />
+        Residential Plumbing
+      </h1>
+
+      <div class="hero__ctas">
+        <a href="tel:2052365014" class="btn btn-primary">Call Us Today</a>
+      </div>
+    </div>
+
+    <!-- Right: your form card (kept as-is) -->
+    <div class="hero__formCard">
+      <div class="hero__cardTop">
+        <img src="/images/chapman-logo.png" alt="Chapman Plumbing" />
+      </div>
+
+      <form class="hero__form" onsubmit="event.preventDefault();">
+        <div class="grid grid--2">
+          <input type="text" name="firstName" placeholder="First Name" required />
+          <input type="text" name="lastName" placeholder="Last Name" required />
+        </div>
+        <div class="grid grid--2">
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="tel" name="phone" placeholder="Phone" required />
+        </div>
+        <input type="text" name="address" placeholder="Address" />
+        <textarea name="message" rows="5" placeholder="Tell us about why you're reaching out to us..."></textarea>
+        <button type="submit" class="btn btn--green">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* === Match header’s nav container exactly === */
+  :root{
+    --container-pad: 16px;
+    /* This MUST match the value your header uses for the nav row */
+    --container-max-wide: 1360px;
+  }
+
+  /* Override any global .container width with higher specificity */
+  .container.container--wide.hero__container{
+    width: min(100% - (var(--container-pad) * 2), var(--container-max-wide)) !important;
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* same left pad as the header */
+  }
+
+  /* === Hero background + overlay === */
+  .hero{
+    position: relative;
+    isolation: isolate;
+    background: center/cover no-repeat url('/images/Serviceareasimage.jpg');
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding-block: 48px;
+  }
+  .hero__overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.33);  /* 33% white */
+    z-index: 0;
+  }
+
+  /* === Two-column layout aligned to the same left rail as the logo === */
+  .hero__container{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 48px;
+    align-items: start;
+    grid-template-columns: 1.1fr 0.9fr;  /* text | form */
+  }
+  @media (max-width: 1024px){
+    .hero__container{ grid-template-columns: 1fr; }
+  }
+
+  /* LEFT: copy block (no font overrides; global.css handles type) */
+  .hero__copy{
+    max-width: 720px;
+    text-align: left;
+  }
+  .hero__copy h1{ margin: 0 0 16px; margin-top: 100px; }
+  .hero__ctas{ display:flex; gap:.75rem; flex-wrap:wrap; }
+
+  /* Buttons */
+  .btn{ display:inline-flex; align-items:center; justify-content:center; padding:.75rem 1.25rem; border:none; border-radius:.375rem; cursor:pointer; text-decoration:none; }
+  .btn-primary{ background:#007F1E;; color:#fff; }
+  .btn-primary:hover{ background:#3fb74c; transform:translateY(-1px); box-shadow:0 4px 12px rgba(220,38,38,.25); }
+  .btn--green{ background:#007F1E; color:#fff; }
+  .btn--green:hover{ background:#3fb74c; }
+
+  /* RIGHT: form card */
+  .hero__formCard{
+    background: rgba(255,255,255,.96);
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 6px;
+    box-shadow: 0 18px 60px rgba(0,0,0,.18);
+    overflow: hidden;
+  }
+  .hero__cardTop{
+    padding: 10px 18px;
+    border-top: 4px solid var(--color-primary-red, #b81e1e);
+    display:flex; justify-content:center; align-items:center;
+  }
+  .hero__cardTop img{ height: 48px; object-fit: contain; }
+
+  .hero__form{
+    padding: 16px 18px 20px;
+    display:grid; gap:12px;
+  }
+  .grid{ display:grid; gap:12px; }
+  .grid--2{ grid-template-columns: 1fr 1fr; }
+  @media (max-width:520px){ .grid--2{ grid-template-columns: 1fr; } }
+
+  .hero__form input,
+  .hero__form textarea{
+    width:100%; border:1px solid #d8dde6; border-radius:6px; padding:12px 14px; background:#fff; outline:none;
+  }
+  .hero__form input:focus,
+  .hero__form textarea:focus{
+    border-color:#9bb7ff;
+    box-shadow:0 0 0 3px rgba(59,130,246,.15);
+  }
+</style>

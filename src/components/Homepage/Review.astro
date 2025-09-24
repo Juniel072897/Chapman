@@ -1,0 +1,72 @@
+---
+/* Walang JS frontmatter kailangan dito */
+---
+
+<section id="reviews" class="reviews-section">
+  <h2 class="reviews-title">Chapman Plumbing Reviews</h2>
+  <h4 class="reviews-subtitle">What Client Say About</h4>
+
+  <!-- ReviewsOnMyWebsite embed container (galing mismo sa client mo) -->
+  <div class="romw-embed"
+       data-romw-token="SFcEvXQvprBvBN2HYHPG0lROkaxPpWyQu2Fv7wPslSlhHwWvv4"></div>
+  <script src="https://reviewsonmywebsite.com/js/v2/embed.js?id=f80941fd7409d125707fcfa008e937a2"
+          type="text/javascript"></script>
+</section>
+
+<style>
+  .reviews-section {
+    max-width: var(--container, 1200px);
+    margin-inline: auto;
+    padding-block: var(--space-8, 3rem);
+    padding-inline: var(--space-4, 1rem);
+    position: relative;
+  }
+
+  .reviews-title,
+  .reviews-subtitle {
+    text-align: center;
+    display: block;
+    color: inherit;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .reviews-title { margin-block-end: var(--space-3, 1rem); }
+  .reviews-subtitle { margin-block-end: var(--space-6, 2rem); }
+
+  .romw-embed {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* === Animation (auto-run fade-in-up) === */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reviews-title,
+  .reviews-subtitle,
+  .romw-embed {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp .6s ease-out forwards;
+  }
+
+  .reviews-title { animation-delay: .1s; }
+  .reviews-subtitle { animation-delay: .2s; }
+  .romw-embed { animation-delay: .3s; }
+
+  /* Accessibility: no animation kung naka reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-title,
+    .reviews-subtitle,
+    .romw-embed {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+</style>

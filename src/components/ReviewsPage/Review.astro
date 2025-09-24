@@ -1,0 +1,368 @@
+---
+// Reviews.astro
+---
+
+<section class="reviews-section">
+  <div class="container">
+    <!-- Title and Rating Cards Layout -->
+    <div class="header-layout">
+      <!-- Title Section -->
+      <div class="title-section">
+        <h1 class="reviews-title">Chapman Plumbing<br>Reviews</h1>
+      </div>
+      
+      <!-- Embedded Rating Cards Section -->
+      <div class="rating-cards">
+        <!-- Google Rating Widget -->
+        <div class="rating-widget google-widget">
+          <div data-romw-token="VG23py9LO881pGnNYFsQyrswWAFAqmud90kKS50fcuTpUfNYc1"></div>
+        </div>
+
+        <!-- Yelp Rating Widget -->
+        <div class="rating-widget yelp-widget">
+          <div data-romw-token="ZxmdE08v1D5An2MjUSPMFTa8Xuti9QBgodpyuWmmeQATdW7Ch4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embedded Review Widgets -->
+    <div class="embedded-widgets">
+      <!-- Individual Reviews Widget -->
+      <div class="reviews-row">
+        <div data-romw-token="0acrjMJ99tu6nQiZYud5lB45Uz4HUFvqvXQBkwpkpkkl5B4lEJ" class="review-widget"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Load the script once for all widgets -->
+<script src="https://reviewsonmywebsite.com/js/v2/embed.js?id=fd1f59fcc8467fb2938d" type="text/javascript"></script>
+
+<style>
+  .reviews-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Header Layout - Title and Rating Cards */
+  .header-layout {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 50px;
+    align-items: flex-start;
+  }
+
+  .title-section {
+    flex: 0 0 auto;
+  }
+
+  .reviews-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .rating-cards {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .rating-widget {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    min-width: 280px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    min-height: 300px;
+  }
+
+  .rating-widget [data-romw-token] {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    border-radius: 12px !important;
+  }
+
+  /* Style the embedded rating widgets to look like the screenshot */
+  .google-widget :global(.romw-container) {
+    padding: 25px !important;
+    background: white !important;
+    border-radius: 12px !important;
+  }
+
+  .yelp-widget :global(.romw-container) {
+    padding: 25px !important;
+    background: white !important;
+    border-radius: 12px !important;
+  }
+
+  /* Style platform headers in embedded widgets */
+  .rating-widget :global(.romw-platform-header) {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .rating-widget :global(.romw-platform-icon) {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+  }
+
+  .rating-widget :global(.romw-platform-name) {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+  }
+
+  .rating-widget :global(.romw-rating-display) {
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  .rating-widget :global(.romw-rating-score) {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .rating-widget :global(.romw-stars) {
+    font-size: 1.2rem !important;
+    color: #fbbf24 !important;
+  }
+
+  .rating-widget :global(.romw-rating-breakdown) {
+    margin-bottom: 15px !important;
+  }
+
+  .rating-widget :global(.romw-rating-row) {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 6px !important;
+    font-size: 0.85rem !important;
+    color: #666 !important;
+  }
+
+  .rating-widget :global(.romw-star-number) {
+    width: 12px !important;
+    text-align: right !important;
+  }
+
+  .rating-widget :global(.romw-bar-container) {
+    flex: 1 !important;
+    height: 6px !important;
+    background-color: #f0f0f0 !important;
+    border-radius: 3px !important;
+    overflow: hidden !important;
+  }
+
+  .rating-widget :global(.romw-bar) {
+    height: 100% !important;
+    background-color: #fbbf24 !important;
+    border-radius: 3px !important;
+  }
+
+  .rating-widget :global(.romw-count) {
+    width: 25px !important;
+    text-align: right !important;
+    font-size: 0.8rem !important;
+  }
+
+  .rating-widget :global(.romw-review-count) {
+    color: #999 !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+
+  /* Embedded Widgets Styling */
+  .embedded-widgets {
+    margin-top: 40px;
+  }
+
+  .reviews-row {
+    margin-bottom: 30px;
+  }
+
+  .review-widget {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  /* Override embedded widget styles to match screenshot */
+  .review-widget :global([data-romw-token]) {
+    width: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Style individual review cards within widgets to match screenshot layout */
+  .review-widget :global(.romw-review-card) {
+    background: white !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin: 15px !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
+    display: inline-block !important;
+    width: calc(25% - 30px) !important;
+    vertical-align: top !important;
+    min-height: 200px !important;
+  }
+
+  /* First row - 4 reviews */
+  .reviews-row:nth-child(1) .review-widget :global(.romw-review-card) {
+    width: calc(25% - 30px) !important;
+  }
+
+  /* Second row - 3 reviews */
+  .reviews-row:nth-child(2) .review-widget :global(.romw-review-card) {
+    width: calc(33.33% - 30px) !important;
+  }
+
+  /* Third row - remaining reviews */
+  .reviews-row:nth-child(3) .review-widget :global(.romw-review-card) {
+    width: calc(25% - 30px) !important;
+  }
+
+  /* Avatar styling to match screenshot */
+  .review-widget :global(.romw-avatar) {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Specific avatar colors to match screenshot */
+  .review-widget :global(.romw-avatar[data-initials="BW"]) {
+    background: #3b82f6 !important;
+  }
+
+  .review-widget :global(.romw-avatar[data-initials="EF"]) {
+    background: #8b5cf6 !important;
+  }
+
+  .review-widget :global(.romw-avatar[data-initials="JH"]) {
+    background: #ef4444 !important;
+  }
+
+  .review-widget :global(.romw-avatar[data-initials="P"]) {
+    background: #f97316 !important;
+  }
+
+  .review-widget :global(.romw-avatar[data-initials="EW"]) {
+    background: #8b5cf6 !important;
+  }
+
+  .review-widget :global(.romw-avatar[data-initials="VS"]) {
+    background: #ef4444 !important;
+  }
+
+  .review-widget :global(.romw-avatar[data-initials="CF"]) {
+    background: #06b6d4 !important;
+  }
+
+  .review-widget :global(.romw-avatar[data-initials="ER"]) {
+    background: #84cc16 !important;
+  }
+
+  .review-widget :global(.romw-reviewer-name) {
+    font-weight: 600 !important;
+    color: #333 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .review-widget :global(.romw-review-stars) {
+    color: #fbbf24 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .review-widget :global(.romw-review-text) {
+    color: #666 !important;
+    line-height: 1.4 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .review-widget :global(.romw-review-date) {
+    color: #999 !important;
+    font-size: 0.8rem !important;
+  }
+
+  .review-widget :global(.romw-platform-icon) {
+    width: 16px !important;
+    height: 16px !important;
+    float: right !important;
+    margin-top: -20px !important;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .header-layout {
+      flex-direction: column;
+      gap: 40px;
+      text-align: center;
+    }
+    
+    .rating-cards {
+      justify-content: center;
+    }
+    
+    .reviews-title {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    .review-widget :global(.romw-review-card) {
+      width: calc(50% - 30px) !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .rating-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .reviews-title {
+      font-size: 2rem;
+    }
+
+    .review-widget :global(.romw-review-card) {
+      width: calc(100% - 30px) !important;
+    }
+  }
+
+  /* Loading state */
+  .review-widget [data-romw-token]:empty::before {
+    content: "Loading reviews...";
+    display: block;
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-style: italic;
+  }
+</style>

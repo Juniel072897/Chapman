@@ -1,0 +1,181 @@
+---
+/* src/components/South.astro */
+---
+
+<section class="south">
+  <div class="south__topbar"></div>
+
+  <div class="container south__container">
+    <!-- LEFT: Business info -->
+    <div class="south__left">
+      <h2 class="south__title">
+        South Birmingham Metro Area<br />
+        Plumber
+      </h2>
+
+      <ul class="south__info">
+        <li>
+          <svg class="i i-building" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 21h16M7 21V3h10v18M7 7h10M11 7v14M15 7v14" />
+          </svg>
+          <span>Chapman Plumbing</span>
+        </li>
+
+        <li>
+          <svg class="i i-pin" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" />
+            <circle cx="12" cy="10" r="3.25" />
+          </svg>
+          <span>2101 Shannon Oxmoor Rd #107, Shannon, AL 35142, United States</span>
+        </li>
+
+        <li>
+          <svg class="i i-phone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v2.5a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.7-3.1 19.7 19.7 0 0 1-6-6 19.5 19.5 0 0 1-3.1-8.7A2 2 0 0 1 4.5 2h2.5a2 2 0 0 1 2 1.6c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8.5 9.9a16 16 0 0 0 5.6 5.6l1.5-1.5a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.6 1.87Z" />
+          </svg>
+          <a href="tel:2052365014">(205) 236-5014</a>
+        </li>
+      </ul>
+
+      <a href="/reviews" class="btn btn--green">Review Us</a>
+    </div>
+
+    <!-- RIGHT: Service Areas -->
+    <div class="south__right">
+      <h2 class="south__heading">
+        Service Area<br />
+        Communities We Service
+      </h2>
+
+      <div class="south__areas">
+        <ul>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Shannon</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Bessemer</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Hoover</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Birmingham</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Brighton</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Fairfield</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Homewood</li>
+        </ul>
+
+        <ul>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Hueytown</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Indian Springs Village</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Midfield</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Mountain Brook</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Vestavia Hills</li>
+          <li><svg class="i i-wrench" viewBox="0 0 24 24"><path d="M22 2l-6 6 2 2 6-6-2-2ZM13 11l-8 8-3 1 1-3 8-8" /></svg>Wine Ridge</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root{
+    /* keep in sync with header container so it lines up with logo */
+    --container-pad: 16px;
+    --container-max: 1300px;
+  }
+
+  .container{
+    width: min(100% - (var(--container-pad) * 2), var(--container-max));
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  .south{
+    background: #222;   /* deep charcoal */
+    color: #fff;
+    padding: 2.5rem 0 3rem;
+    position: relative;
+  }
+  .south__topbar{
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: #c92323; /* thin red line like screenshot */
+  }
+
+  .south__container{
+    position: relative;
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 1024px){
+    .south__container{
+      grid-template-columns: 1.05fr 0.95fr; /* left heavier than right */
+      align-items: start;
+    }
+  }
+
+  /* LEFT column */
+  .south__title{
+    margin: 0 0 1rem;  
+    color: #fff;
+  }
+  .south__info{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    display: grid;
+    gap: .75rem;
+  }
+  .south__info li{
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    align-items: center;
+    gap: .5rem;
+  }
+  .south__info a{
+    color: #fff;
+    text-decoration: none;
+  }
+  .south__info a:hover{ text-decoration: underline; }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .7rem 1.1rem;
+    border-radius: .5rem;
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn--green{ background:#007F1E; color:#fff; }
+  .btn--green:hover{ background:#3fb74c; }
+
+  /* RIGHT column */
+  .south__heading{
+    margin: 0 0 1rem;
+    text-align: left; /* screenshot shows left-aligned heading in right column */
+    color: #fff;
+  }
+
+  .south__areas{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem 2rem;
+  }
+  @media (min-width: 680px){
+    .south__areas{ grid-template-columns: repeat(2, 1fr); }
+  }
+  .south__areas ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: .6rem;
+  }
+  .south__areas li{
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  /* Icons */
+  .i{ width: 20px; height: 20px; display: inline-block; fill: none; stroke: #dc2626; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .i-wrench path{ stroke: #dc2626; }
+</style>

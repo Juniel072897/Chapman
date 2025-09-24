@@ -1,0 +1,156 @@
+---
+
+/* src/components/Serving.astro */
+const phoneNumber = '205-236-5014';
+const servingImg  = '/images/residential.jpg'; // ← replace with your image
+---
+
+<section class="serving">
+  <div class="container serving__wrap">
+    <!-- Left: image -->
+    <figure class="serving__media">
+      <img
+        src={servingImg}
+        alt="Neighborhood home exterior"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <!-- Right: red panel -->
+    <div class="serving__panel">
+      <h2 class="serving__title">Serving the Neighborhood</h2>
+
+      <p>
+        Live a leak-free life by only trusting the professionals! Chapman Plumbing
+        provides top-notch service and is just a call away in Alabama. Our plumbing
+        professionals cater residential and commercial plumbing in Shannon, Bessemer,
+        Hoover, Birmingham, Brighton, Fairfield, Homewood, Hueytown, Indian Springs
+        Village, Midfield, Mountain Brook, Vestavia Hill, Wine Ridge, and neighboring
+        areas.
+      </p>
+
+      <a class="btn btn--green" href={`tel:${phoneNumber.replace(/-/g,'')}`}>
+        Call Us Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root{
+    --container-max: 1360px;
+    --container-pad: 16px;
+
+    --red: #c62828;             /* panel background */
+    --green: #177a3f;           /* button */
+    --green-hover:#0f6a34;
+    --radius: 12px;
+  }
+
+  .container{
+    width: min(100% - (var(--container-pad) * 2), var(--container-max));
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  .serving{
+    padding-block: 24px 56px;
+  }
+
+  .serving__wrap{
+    display: grid;
+    grid-template-columns: 1.25fr 1fr; /* photo a bit wider like your screenshot */
+    gap: 0;
+    align-items: stretch;
+  }
+
+  /* Image */
+  .serving__media{
+    margin: 0;
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0,0,0,.12), 0 6px 18px rgba(0,0,0,.06);
+  }
+  .serving__media img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Red panel */
+  .serving__panel{
+    background: var(--red);
+    color: #fff; /* base */
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    padding: 28px;
+    display: grid;
+    align-content: start;
+    gap: 16px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.12), 0 6px 18px rgba(0,0,0,.06);
+  }
+
+  /* Force ALL text inside panel to white */
+  .serving__panel h1,
+  .serving__panel h2,
+  .serving__panel h3,
+  .serving__panel p,
+  .serving__panel a {
+    color: #fff;
+  }
+
+  .serving__title{
+    margin: 0 0 6px 0;
+    font-weight: 700;
+  }
+  .serving__panel p{
+    margin: 0 0 10px 0;
+    line-height: 1.65;
+  }
+
+  /* Button */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: 0;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    width: auto;
+    min-width: 0;
+    max-width: max-content;
+  }
+  
+.btn--green {
+  background: var(--green);
+  color: #fff;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn--green:hover {
+  background: #3fb74c;   /* hover color */
+  color: #fff;
+  transform: translateY(-1px); /* optional subtle lift */
+}
+
+  /* Responsive */
+  @media (max-width: 980px){
+    .serving__wrap{
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .serving__media{
+      border-radius: var(--radius);
+    }
+    .serving__panel{
+      border-radius: var(--radius);
+      padding: 22px 18px;
+    }
+  }
+</style>

@@ -1,0 +1,154 @@
+<section class="hero">
+  <div class="hero__overlay"></div>
+
+  <div class="container container--wide hero__container">
+    <!-- Headline + copy -->
+    <div class="hero__copy">
+      <h1>
+        Plumber-Local Family<br />
+        Plumbing Problems Fixed<br />
+        the First Time!
+      </h1>
+
+      <h2 class="hero__kicker">Say No More to Slow Water and Foul Odors</h2>
+      <p class="hero__sub">Providing Professional Plumbing Services at a Reasonable Price since 1964.</p>
+
+      <div class="hero__ctas">
+        <a href="#" class="btn btn-primary">Book a Consultation</a>
+        <a href="#" class="btn btn-primary">Call Us Today</a>
+      </div>
+    </div>
+
+    <!-- Features row (PNG icons, text left-aligned) -->
+    <div class="features features--icons-left">
+      <!-- Clogged Drains -->
+      <div class="feature">
+        <img
+          class="feature__icon"
+          src="/images/pipe- (1).png"
+          alt="Pipe icon"
+          loading="lazy"
+          width="64"
+          height="64"
+          decoding="async"
+        />
+        <span class="feature__label"><strong>No More</strong><br />Clogged Drains</span>
+      </div>
+
+      <!-- Leaking Faucet -->
+      <div class="feature">
+        <img
+          class="feature__icon"
+          src="/images/water-tap (1).png"
+          alt="Water tap icon"
+          loading="lazy"
+          width="64"
+          height="64"
+          decoding="async"
+        />
+        <span class="feature__label"><strong>No More</strong><br />Leaking Faucet</span>
+      </div>
+
+      <!-- Running Toilet -->
+      <div class="feature">
+        <img
+          class="feature__icon"
+          src="/images/toilet-1 (1).png"
+          alt="Toilet icon"
+          loading="lazy"
+          width="64"
+          height="64"
+          decoding="async"
+        />
+        <span class="feature__label"><strong>No More</strong><br />Running Toilet</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* === Shared container vars (match header) === */
+:root {
+  --container-pad: 16px;
+  --container-max-wide: 1360px;
+}
+
+/* === Buttons & type (unchanged) === */
+.btn{ display:inline-flex; align-items:center; justify-content:center; padding:.75rem 1.5rem; font-weight:600; text-decoration:none; border-radius:.375rem; transition:all .2s ease-in-out; border:none; cursor:pointer; font-size:.875rem; line-height:1.25; }
+.btn-primary{ background-color:#dc2626; color:#fff; }
+.btn-primary:hover{ background-color:#121212; transform:translateY(-1px); box-shadow:0 4px 12px rgba(220,38,38,.3); }
+h1,h2,h3,h4,h5,h6{ font-weight:700; line-height:1.2; margin:0; }
+p{ line-height:1.6; margin:0; }
+
+/* === Hero === */
+.hero{ position:relative; isolation:isolate; background:center/cover no-repeat url("/images/hero.webp"); background-blend-mode:overlay; min-height:85vh; display:flex; align-items:center; }
+.hero__container{
+  position:relative; z-index:1;
+  width:min(100% - (var(--container-pad)*2), var(--container-max-wide));
+  margin-inline:auto;
+  padding-block:2rem;
+  display:grid; gap:1.25rem; justify-items:start; text-align:left;
+}
+.hero__copy{ max-width:700px; }
+.hero__copy h1{ font-size:clamp(2rem,5vw,3.5rem); margin-bottom:1rem; line-height:1.1; }
+.hero__kicker{ font-size:clamp(1.25rem,3vw,1.75rem); font-weight:500; margin:.75rem 0; }
+.hero__sub{ font-size:1.125rem; margin:.5rem 0 1rem; }
+.hero__ctas{ margin-top:1rem; display:flex; gap:.75rem; flex-wrap:wrap; }
+
+/* === Features card === */
+.features{
+  width:100%;
+  max-width:1000px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  display:grid;
+  grid-template-columns:1fr;
+  overflow:hidden;
+  margin-top:2rem;
+  border:1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Icon left + text, like your screenshot */
+.features--icons-left .feature{
+  display:grid;
+  grid-template-columns: 70px 1fr;  /* icon | text */
+  align-items:center;
+  column-gap:1.25rem;
+  padding:1.5rem 1.5rem;
+  text-align:left;
+}
+.feature + .feature{ border-top:1px solid #e5e7eb; }
+
+.feature__icon{
+  width:64px; height:64px; object-fit:contain; display:block;
+}
+.feature__label{ line-height:1.25; font-size:1.1rem; }
+
+/* Desktop: 3 columns, vertical separators between items, not centered */
+@media (min-width:768px){
+  .features{ grid-template-columns: repeat(3, 1fr); }
+  .features--icons-left .feature{
+    border-top:0;
+    border-right:1px solid #e5e7eb;
+    padding:2rem 2rem;
+    grid-template-columns: 70px 1fr;
+    justify-items:start;
+  }
+  .features--icons-left .feature:last-child{ border-right:0; }
+  .hero__container{ padding-block:4rem; }
+}
+
+/* === Fade-in anim (unchanged) === */
+@keyframes fadeInUp{ from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+.hero__copy > *{ animation:fadeInUp .6s ease-out forwards; }
+.hero__copy h1{ animation-delay:.1s }
+.hero__kicker{ animation-delay:.2s }
+.hero__sub{ animation-delay:.3s }
+.hero__ctas{ animation-delay:.4s }
+.features{ animation:fadeInUp .6s ease-out .5s forwards; opacity:0; }
+.feature{ opacity:0; animation:fadeInUp .4s ease-out forwards; }
+.feature:nth-child(1){ animation-delay:.6s }
+.feature:nth-child(2){ animation-delay:.7s }
+.feature:nth-child(3){ animation-delay:.8s }
+</style>

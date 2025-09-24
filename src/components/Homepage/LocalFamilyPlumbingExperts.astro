@@ -1,0 +1,227 @@
+---
+/**
+ * LocalFamilyPlumbingExperts.astro
+ * Uses global button styles (.btn .btn-success)
+ */
+const headline = "Local Family Plumbing Experts"; // H2
+const subhead  = "The Experience and Tools to Get The Job Done Right!";
+
+const bigCols = [
+  { heading: "Kitchen", items: [
+    "Clogged Drain","Garbage Disposal","Fixture Repair","Leak Repair","Water Filter Insulation","Gas Line Services"
+  ]},
+  { heading: "Bath Room", items: [
+    "Clogged Toilet","Running Toilet","Emergency Plumbing Repair","Clogged Drain","Shower Installation","Shower Repair"
+  ]},
+  { heading: "Whole House", items: [
+    "Pipe Repair & Replacement","Sewer Line Services","Plumbing Inspections","Water Filter Installation","Gas Line Services","Sump Pump"
+  ]}
+];
+
+const smallCards = [
+  {
+    title: "Water Heaters", // H3
+    icon: "/images/waterheater.png",
+    blurb:
+      "Whether it’s a traditional tank-based system or a modern tankless unit, Chapman Plumbing is a reputable provider of comprehensive water heater services. We specialize in installation, maintenance, repair, and replacement for homes and businesses.",
+    bullets: ["Repair", "Installation"],
+    cta: { label: "Learn More", href: "#" }
+  },
+  {
+    title: "Drain Cleaning & Hydro Jetting", // H3
+    icon: "/images/Drain-cleanin-icon-1.png",
+    blurb:
+      "Don’t let clogged drains disrupt your daily routine. Our hydro jetting services tackle even the most stubborn blockages quickly and safely.",
+    bullets: ["Hair, Soap, and Grease Buildup", "Persistent Foul Odors", "Root Intrusions"],
+    cta: { label: "Learn More", href: "#" }
+  },
+  {
+    title: "Commercial Plumber", // H3
+    icon: "/images/apartment-icon.png",
+    blurb:
+      "From restaurants to offices and retail, we deliver precise plumbing solutions for reliable, comfortable workspaces.",
+    bullets: ["Pipe Leaks or Slow Drains", "Sprinkler System Issues", "Sewer Line Blockages"],
+    cta: { label: "Learn More", href: "#" }
+  }
+];
+---
+
+<section class="lfpe">
+  <!-- Header -->
+  <div class="lfpe__header">
+    <h2 class="lfpe__title">{headline}</h2>
+    <p class="lfpe__subtitle">{subhead}</p>
+  </div>
+
+  <!-- Big feature card -->
+  <article class="lfpe__feature-card">
+    <div class="lfpe__feature-media">
+      <img src="/images/houses-in-alabama-usa.jpg" alt="Residential plumber" loading="lazy" decoding="async" />
+    </div>
+
+    <div class="lfpe__feature-content">
+      <h3 class="lfpe__feature-title">Residential Plumber</h3>
+      <p class="lfpe__feature-blurb">
+        Tired of dealing with clogged drains at home? Our plumbing experts — both kitchen and bathroom plumbers — are here to solve all your household plumbing emergencies! We offer a wide array of comprehensive plumbing services designed to address a range of issues, from routine maintenance to complex repairs. If you notice any of these issues, feel free to contact us.
+      </p>
+
+      <div class="lfpe__columns">
+        {bigCols.map(col => (
+          <div class="lfpe__col">
+            <!-- H3 for Kitchen / Bath Room / Whole House -->
+            <h3 class="lfpe__col-title">{col.heading}</h3>
+            <ul class="lfpe__list">
+              {col.items.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <a href="#" class="btn btn-success">Learn More</a>
+    </div>
+  </article>
+
+  <!-- Three cards row -->
+  <div class="lfpe__grid">
+    {smallCards.map(card => (
+      <article class="lfpe__card">
+        {card.icon && (
+          <img class="lfpe__icon" src={card.icon} alt="" width="56" height="56" loading="lazy" decoding="async" />
+        )}
+        <!-- H3 for the three small cards -->
+        <h3 class="lfpe__card-title">{card.title}</h3>
+        <p class="lfpe__card-blurb">{card.blurb}</p>
+
+        <ul class="lfpe__bullets">
+          {card.bullets.map(b => (
+            <li><span class="dot" aria-hidden="true"></span>{b}</li>
+          ))}
+        </ul>
+
+        <a class="btn btn-success" href={card.cta.href}>{card.cta.label}</a>
+      </article>
+    ))}
+  </div>
+
+  <!-- Wisetack banner (bottom) -->
+  <div class="lfpe__finance">
+    <img class="lfpe__finance-logo" src="/images/wisetack.png" alt="Wisetack" width="150" loading="lazy" decoding="async" />
+    <!-- H3 for the finance headline -->
+    <h3 class="lfpe__finance-head">NEW! We Offer financing.</h3>
+    <p class="lfpe__finance-sub">Prequalify today and contact us to learn more about financing your next project!</p>
+  </div>
+</section>
+
+<style>
+  /* Container */
+  .lfpe {
+    width: min(100% - var(--container-pad, 2rem), var(--container-max, 1200px));
+    margin-inline: auto;
+    padding-block-start: var(--space-9, 4rem);
+    padding-block-end: var(--space-6, 1.5rem);
+    position: relative;
+  }
+
+  /* Header */
+  .lfpe__header { text-align: center; margin-block-end: var(--space-7, 2rem); }
+  .lfpe__title { margin: 0 0 .25rem 0; }
+  .lfpe__subtitle { opacity: .85; margin: 0; }
+
+  /* Big card */
+  .lfpe__feature-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    border: 1px solid rgba(0,0,0,.06);
+    overflow: hidden;
+    align-items: stretch; /* equal heights */
+  }
+
+  /* Media fills full column height */
+  .lfpe__feature-media {
+    position: relative;
+    background: #f3f4f6;
+    min-height: 220px; /* mobile fallback */
+  }
+  .lfpe__feature-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .lfpe__feature-content { padding: 1.25rem 1.25rem 1.5rem; }
+  .lfpe__feature-title { margin: 0 0 .5rem 0; }
+  .lfpe__feature-blurb { margin: 0 0 1rem 0; }
+
+  .lfpe__columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-block: 1rem 1.25rem;
+  }
+  .lfpe__col-title { margin: 0 0 .5rem 0; } /* now an h3 */
+  .lfpe__list { margin: 0; padding-left: 1.1rem; }
+  .lfpe__list li { margin: .15rem 0; }
+
+  /* Grid of three cards */
+  .lfpe__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-block-start: 1.5rem;
+  }
+  .lfpe__card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 10px 24px rgba(0,0,0,.06);
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: grid;
+    gap: .75rem;
+  }
+  .lfpe__icon { width: 56px; height: 56px; object-fit: contain; display: block; margin-block-end: .25rem; }
+  .lfpe__card-title { margin: 0; } /* h3 */
+  .lfpe__card-blurb { margin: 0; opacity: .9; }
+
+  .lfpe__bullets {
+    list-style: none;
+    padding: 0; margin: .25rem 0 .75rem 0;
+    display: grid; gap: .4rem;
+  }
+  .lfpe__bullets li {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    align-items: start;
+    gap: .5rem;
+  }
+  .lfpe .dot { width: 8px; height: 8px; border-radius: 999px; background: #ef4444; margin-top: .4rem; display: inline-block; }
+
+  /* Wisetack banner */
+  .lfpe__finance{
+    background: #2066d6;
+    color: #fff;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    margin-block-start: var(--space-7, 2rem);
+    box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  }
+  .lfpe__finance-logo{ margin-inline: auto; margin-bottom: 1rem; display: block; filter: brightness(0) invert(1); }
+  .lfpe__finance-head{ margin: 0 0 .5rem 0; color:#fff; } /* h3 */
+  .lfpe__finance-sub{ margin: 0; color:#fff; opacity:.95; }
+
+  /* Desktop */
+  @media (min-width: 900px) {
+    .lfpe__feature-card { grid-template-columns: 1.05fr 1.95fr; }
+    .lfpe__feature-content { padding: 1.5rem 1.75rem 1.75rem; }
+    .lfpe__columns { grid-template-columns: repeat(3, 1fr); }
+    .lfpe__grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .lfpe__finance { padding: 2.5rem; }
+    .lfpe__feature-media { min-height: 0; } /* match text column */
+  }
+</style>

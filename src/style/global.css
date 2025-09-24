@@ -1,0 +1,230 @@
+/* =====================================================
+   Chapman Plumbing — Global Styles
+   ===================================================== */
+
+/* Google Font (same clean feel) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap');
+
+/* ------------------ CSS Variables ------------------ */
+:root{
+  /* Brand */
+  --color-primary-red: #C22D2C;
+  --color-primary-green: #007F1E;
+  --color-hover-green: #3fb74c;     /* <-- requested hover color */
+
+  /* Neutrals */
+  --color-dark-charcoal: #1A1A1A;
+  --color-slate-blue: #1A202C;
+  --color-navy-gray: #2D3748;
+  --color-muted-gray-blue: #718096;
+  --color-light-gray: #EDF2F7;
+  --color-off-white: #F8F8F8;
+  --color-white: #FFFFFF;
+
+  /* Type */
+  --font-base: 'Roboto', system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+  --font-size-base: 17px;
+
+  --h1-size: 48px;
+  --h2-size: 32px;
+  --h3-size: 22px;
+  --h4-size: 19px;
+  --h5-size: 18px;
+  --h6-size: 17px;
+
+  /* Spacing scale (used for sections + utilities) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* Containers */
+  --container-max: 1200px;      /* normal pages */
+  --container-max-wide: 1360px; /* header/nav + hero feel like chapmanplumbingal.com */
+  --container-pad: 16px;        /* gutter on small screens */
+
+  /* Borders & effects */
+  --radius: 8px;
+  --shadow-soft: 0 6px 20px rgba(0,0,0,.10);
+}
+
+/* ------------------ Reset / Base ------------------ */
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body{
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  color: var(--color-dark-charcoal);
+  background: var(--color-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img{ max-width: 100%; display: block; }
+
+/* ------------------ Typography ------------------ */
+h1, h2, h3, h4, h5, h6{
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-dark-charcoal);
+  margin-bottom: var(--space-4);
+}
+h1{ font-size: clamp(60px, 5vw, var(--h1-size)); }
+h2{ font-size: clamp(42px, 3.5vw, var(--h2-size)); }
+h3{ font-size: clamp(25px, 2.4vw, var(--h3-size)); }
+h4{ font-size: var(--h4-size); font-weight: 700; }
+h5{ font-size: var(--h5-size); font-weight: 700; }
+h6{ font-size: var(--h6-size); font-weight: 700; }
+
+p{ margin-bottom: var(--space-4); color: var(--color-dark-charcoal); }
+ul, ol{ padding-left: 1.25rem; margin-bottom: var(--space-4); }
+
+/* Links */
+a{
+  color: var(--color-primary-red);
+  text-decoration: none;
+  transition: color .2s ease, opacity .2s ease;
+}
+a:hover{ color: var(--color-primary-green); }
+
+/* ------------------ Containers ------------------ */
+/* Wide container (same width as header/nav) */
+.container--wide{
+  width: min(100% - (var(--container-pad) * 2), var(--container-max-wide));
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+
+/* Make ONLY the header/nav row a bit wider on desktop */
+@media (min-width: 981px){
+  .navwrap .container{ 
+    width: min(100% - (var(--container-pad) * 2), var(--container-max-wide));
+  }
+}
+
+/* ------------------ Sections (uniform spacing) ------------------ */
+/* Use .section on every major page band to unify top/bottom spacing */
+.section{ padding-block: var(--space-10); }            /* default = 64px top & bottom */
+.section--tight{ padding-block: var(--space-8); }      /* 40px  */
+.section--loose{ padding-block: var(--space-12); }     /* 96px  */
+
+/* Optional background helpers */
+.section--light{ background: var(--color-light-gray); }
+.section--offwhite{ background: var(--color-off-white); }
+.section--dark{ background: var(--color-slate-blue); color: var(--color-white); }
+.section--dark a{ color: #fff; }
+
+/* Ensure headings in sections have a little space after */
+.section > * + *{ margin-top: var(--space-6); }
+
+/* ------------------ Buttons ------------------ */
+button, .btn{
+  font-family: inherit;
+  font-weight: 800;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius);
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .02s ease;
+  box-shadow: var(--shadow-soft);
+  color: var(--color-white);
+}
+
+/* Primary (red) – like header CTA */
+.btn-primary{ background: var(--color-primary-red); }
+.btn-primary:hover{ background: var(--color-hover-green); color:#fff; }
+
+/* Success (green) */
+.btn-success{ background: var(--color-primary-green); }
+.btn-success:hover{ background: var(--color-hover-green); color:#fff; }
+
+/* Secondary (dark navy/charcoal) */
+.btn-secondary{ background: var(--color-navy-gray); }
+.btn-secondary:hover{ background: var(--color-hover-green); color:#fff; }
+
+/* Outlines (nice for hero alt CTAs) */
+.btn-outline{
+  background: transparent;
+  color: var(--color-primary-red);
+  border: 2px solid currentColor;
+  box-shadow: none;
+}
+.btn-outline:hover{
+  color: #fff;
+  background: var(--color-hover-green);
+  border-color: var(--color-hover-green);
+}
+
+/* Sizes */
+.btn-sm{ padding: .55rem .9rem; font-size: 15px; }
+.btn-lg{ padding: .95rem 1.25rem; font-size: 18px; }
+
+/* Slight tap feedback */
+button:active, .btn:active{ transform: translateY(1px); }
+
+/* ------------------ Cards / Panels (optional helpers) ------------------ */
+.card{
+  background: var(--color-white);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: var(--radius);
+  padding: var(--space-7);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ------------------ Utilities ------------------ */
+.text-center{ text-align: center; }
+.text-muted{ color: var(--color-muted-gray-blue); }
+.mb-0{ margin-bottom: 0 !important; }
+.mt-0{ margin-top: 0 !important; }
+
+/* Space stack helper: adds consistent vertical rhythm in a container */
+.stack > * + *{ margin-top: var(--space-5); }
+
+/* ------------------ Header Row Tweaks (spacing like reference) ------------------ */
+.navwrap{
+  background: var(--color-white);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.nav{ 
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
+  padding-block: .55rem;           /* compact bar feel (top/bottom spacing) */
+}
+.logo img{ height: 78px; }          /* visually similar logo size */
+@media (min-width: 981px){
+  .nav{ padding-block: .85rem; }    /* a touch more room on desktop */
+}
+
+/* ------------------ Topbar (mobile call button already handled in component) ------------------ */
+.topbar{
+  background: var(--color-primary-red);
+  color: #fff;
+}
+.topbar__inner{
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: .75rem; 
+  padding-block: .7rem;
+}
+.topbar__cta{ color: #fff; }

@@ -1,0 +1,291 @@
+---
+/**
+ * Localfamily.astro
+ * Matches the “Local Family Plumbing Experts” layout you showed.
+ * Uses global button styles (.btn, .btn-success).
+ */
+
+const headline = "Local Family Plumbing Experts";
+const subhead  = "The Experience and Tools to Get The Job Done Right!";
+
+/* Residential columns */
+const residentialCols = [
+  { heading: "Kitchen", items: [
+    "Clogged Drain",
+    "Garbage Disposal",
+    "Fixture Repair",
+    "Leak Repair",
+    "Water Filter Installation",
+    "Gas Line Services"
+  ]},
+  { heading: "Bath Room", items: [
+    "Clogged Toilet",
+    "Running Toilet",
+    "Emergency Plumbing Repair",
+    "Clogged Drain",
+    "Shower Installation",
+    "Shower Repair"
+  ]},
+  { heading: "Whole House", items: [
+    "Pipe Repair & Replacement",
+    "Sewer Line Services",
+    "Plumbing Inspections",
+    "Water Filter Installation",
+    "Gas Line Services",
+    "Sump Pump"
+  ]}
+];
+
+/* Three small feature cards (icons left) */
+const smallCards = [
+  {
+    title: "Water Heaters",
+    icon: "/images/waterheater.png",
+    blurb:
+      "Whether it’s a traditional tank-based system or a modern tankless unit, Chapman Plumbing provides installation, maintenance, repair, and replacement for homes and businesses.",
+    bullets: ["Repair", "Installation"],
+    cta: { label: "Learn More", href: "#" }
+  },
+  {
+    title: "Drain Cleaning & Hydro Jetting",
+    icon: "/images/Drain-cleanin-icon-1.png",
+    blurb:
+      "Don’t let clogged drains disrupt your daily routine. Our professional drain cleaning and hydro jetting services tackle even the most stubborn blockages.",
+    bullets: ["Hair, Soap, and Grease Buildup", "Persistent Foul Odors", "Root Intrusions"],
+    cta: { label: "Learn More", href: "#" }
+  },
+  {
+    title: "Specialty Plumbing",
+    icon: "/images/apartment-icon.png",
+    blurb:
+      "Custom or unique plumbing needs? We deliver expert solutions for special fixtures, softener systems, remodels & renovations, and more.",
+    bullets: [
+      "Custom Fixture Installation",
+      "Water Filtration & Softener Systems",
+      "Backflow Prevention Devices"
+    ],
+    cta: { label: "Learn More", href: "#" }
+  }
+];
+
+/* Commercial columns */
+const commercialCols = [
+  {
+    heading: "Kitchen & Food Service Areas",
+    items: [
+      "Grease Trap Installation",
+      "Clogged Drain or Sink",
+      "Water Line Repair",
+      "Fixture Replacement",
+      "Garbage Disposal Services",
+      "Commercial Dishwasher Hookups"
+    ]
+  },
+  {
+    heading: "Restrooms",
+    items: [
+      "Clogged Toilets",
+      "Urinal Repairs",
+      "Leaking Fixtures",
+      "Toilet Replacement",
+      "Sensor Flush Valve Services",
+      "Water-Saving Fixture Upgrades"
+    ]
+  },
+  {
+    heading: "Whole Facility",
+    items: [
+      "Backflow Prevention",
+      "Pipe Leak Detection & Repair",
+      "Sewer Line Cleaning & Repairs",
+      "Commercial Water Heater Installation",
+      "Gas Line Services",
+      "Plumbing System Maintenance & Inspections"
+    ]
+  }
+];
+
+/* Trust block copy (edit as you like) */
+const trustHeading = "A Local Plumber You Can Trust!";
+const trustLead = `Hello and welcome to Chapman Plumbing! We are a full-service plumbing company that is ready and willing to come to your aid whether you’re in an emergency or just need your pipes tightened. We have years of experience and are pros when it comes to the plumbing services Birmingham residents rely on.`;
+const trustP1 = `We offer standard plumbing services and more, and are able to fix everything from dripping faucets and dripping valves to leaking tub drains. We can install new sinks and have worked in construction as well as plumbing. We’re the perfect Birmingham plumbing contractors if you are adding onto your building or home since we’ll make sure that your pipes are secure and tight from the beginning.`;
+const trustP2 = `We are experts at mending and securing your pipes, drains, and faucets. Your bathroom, kitchen, and washroom will perform optimally after going through an appointment with us. No clog in Birmingham can stand up to Chapman. If you have a drain stoppage, we have some of the best equipment on the market for getting rid of it. We use only the best materials in reconstruction or mending any drain or pipe damage.`;
+const trustP3 = `Our plumbing services include both commercial and residential clients throughout Birmingham, Bessemer and surrounding areas. For a full list of our general services, please check out our services page, and make sure to contact us for special requests.`;
+---
+
+<section class="lfpe">
+  <!-- Section header -->
+  <header class="lfpe__header">
+    <h2 class="lfpe__title">{headline}</h2>
+    <p class="lfpe__subtitle">{subhead}</p>
+  </header>
+
+  <!-- Residential Big Card -->
+  <article class="lfpe__feature-card">
+    <div class="lfpe__feature-media">
+      <img src="/images/houses-in-alabama-usa.jpg" alt="Residential plumber in Alabama" loading="lazy" decoding="async" />
+    </div>
+
+    <div class="lfpe__feature-content">
+      <h3 class="lfpe__feature-title">Residential Plumber</h3>
+      <p class="lfpe__feature-blurb">
+        Tired of dealing with clogged drains at home? Our plumbing experts—both kitchen and bathroom plumbers—are here to solve all your household plumbing emergencies! We offer a wide array of comprehensive plumbing services designed to address a range of issues, from routine maintenance to complex repairs. If you notice any of these issues, feel free to contact us.
+      </p>
+
+      <div class="lfpe__columns">
+        {residentialCols.map(col => (
+          <div class="lfpe__col">
+            <h3 class="lfpe__col-title">{col.heading}</h3>
+            <ul class="lfpe__list">
+              {col.items.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <a href="#" class="btn btn-success">Learn More</a>
+    </div>
+  </article>
+
+  <!-- Three Feature Cards -->
+  <div class="lfpe__grid">
+    {smallCards.map(card => (
+      <article class="lfpe__card">
+        {card.icon && (
+          <img class="lfpe__icon" src={card.icon} alt="" width="56" height="56" loading="lazy" decoding="async" />
+        )}
+        <h3 class="lfpe__card-title">{card.title}</h3>
+        <p class="lfpe__card-blurb">{card.blurb}</p>
+
+        <ul class="lfpe__bullets">
+          {card.bullets.map(b => (
+            <li><span class="dot" aria-hidden="true"></span>{b}</li>
+          ))}
+        </ul>
+
+        <a class="btn btn-success" href={card.cta.href}>{card.cta.label}</a>
+      </article>
+    ))}
+  </div>
+
+  <!-- Commercial Big Card -->
+  <article class="lfpe__feature-card lfpe__feature-card--commercial">
+    <div class="lfpe__feature-media">
+      <img src="/images/Commercial-Plumber.jpg" alt="Commercial plumbing services" loading="lazy" decoding="async" />
+    </div>
+
+    <div class="lfpe__feature-content">
+      <h3 class="lfpe__feature-title">Commercial Plumber</h3>
+      <p class="lfpe__feature-blurb">
+        Running a business means every minute counts—don’t let plumbing problems slow you down. Chapman Plumbing offers reliable, professional commercial plumbing services to keep your operation running smoothly. Whether you manage a restaurant, retail space, office building, or any other commercial facility, our licensed plumbers are ready to respond quickly and efficiently.
+      </p>
+
+      <div class="lfpe__columns">
+        {commercialCols.map(col => (
+          <div class="lfpe__col">
+            <h3 class="lfpe__col-title">{col.heading}</h3>
+            <ul class="lfpe__list">
+              {col.items.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <a href="#" class="btn btn-success">Learn More</a>
+    </div>
+  </article>
+
+  <!-- Trust Block -->
+  <section class="lfpe__trust">
+    <h2 class="lfpe__trust-title">
+      A <span class="accent">Local Plumber</span> You Can Trust!
+    </h2>
+    <p class="lfpe__trust-lead">{trustLead}</p>
+    <p>{trustP1}</p>
+    <p>{trustP2}</p>
+    <p>{trustP3}</p>
+  </section>
+</section>
+
+<style>
+  /* Container */
+  .lfpe{
+    width: min(100% - var(--container-pad, 2rem), var(--container-max, 1200px));
+    margin-inline: auto;
+    padding-block: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem);
+    position: relative;
+  }
+
+  /* Header */
+  .lfpe__header{ text-align:center; margin-bottom: clamp(1.25rem, 3vw, 1.75rem); }
+  .lfpe__title{ margin:0 0 .25rem 0; }
+  .lfpe__subtitle{ margin:0; opacity:.85; }
+
+  /* Big card base */
+  .lfpe__feature-card{
+    display:grid;
+    grid-template-columns: 1fr;
+    background:#fff;
+    border-radius:12px;
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    overflow:hidden;
+    align-items:stretch;
+  }
+  .lfpe__feature-card + .lfpe__grid{ margin-top: clamp(1rem, 3vw, 1.5rem); }
+  .lfpe__feature-card--commercial{ margin-top: clamp(1.25rem, 3.5vw, 2rem); }
+
+  /* Media */
+  .lfpe__feature-media{ position:relative; min-height:220px; background:#f3f4f6; }
+  .lfpe__feature-media img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+  }
+
+  /* Content */
+  .lfpe__feature-content{ padding: 1.25rem 1.25rem 1.5rem; }
+  .lfpe__feature-title{ margin:0 0 .5rem 0; }
+  .lfpe__feature-blurb{ margin:0 0 1rem 0; }
+
+  .lfpe__columns{
+    display:grid; grid-template-columns:1fr; gap: 1rem;
+    margin: 1rem 0 1.25rem 0;
+  }
+  .lfpe__col-title{ margin:0 0 .5rem 0; }
+  .lfpe__list{ margin:0; padding-left: 1.1rem; }
+  .lfpe__list li{ margin:.15rem 0; }
+
+  /* Three feature cards */
+  .lfpe__grid{
+    display:grid; grid-template-columns:1fr; gap: 1rem;
+  }
+  .lfpe__card{
+    background:#fff; border-radius:12px; border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 24px rgba(0,0,0,.06);
+    padding: 1.25rem 1.25rem 1.5rem;
+    display:grid; gap:.75rem;
+  }
+  .lfpe__icon{ width:56px; height:56px; object-fit:contain; margin-bottom:.25rem; }
+  .lfpe__card-title{ margin:0; }
+  .lfpe__card-blurb{ margin:0; opacity:.9; }
+  .lfpe__bullets{
+    list-style:none; margin:.25rem 0 .75rem 0; padding:0; display:grid; gap:.4rem;
+  }
+  .lfpe__bullets li{ display:grid; grid-template-columns:14px 1fr; gap:.5rem; align-items:start; }
+  .lfpe .dot{ width:8px; height:8px; border-radius:999px; background:#ef4444; margin-top:.4rem; display:inline-block; }
+
+  /* Trust block */
+  .lfpe__trust{ margin-top: clamp(1.5rem, 4vw, 2.5rem); }
+  .lfpe__trust-title{ margin:0 0 .75rem 0; }
+  .lfpe__trust-lead{ margin:0 0 .75rem 0; }
+  .lfpe__trust p{ margin:.5rem 0; }
+  .lfpe__trust .accent{ color: var(--color-primary-red, #dc2626); font-weight: 700; }
+
+  /* Desktop */
+  @media (min-width: 900px){
+    .lfpe__feature-card{ grid-template-columns: 1.05fr 1.95fr; }
+    .lfpe__feature-content{ padding: 1.5rem 1.75rem 1.75rem; }
+    .lfpe__columns{ grid-template-columns: repeat(3, 1fr); }
+    .lfpe__grid{ grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .lfpe__feature-media{ min-height: 0; }
+  }
+</style>

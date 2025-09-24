@@ -1,0 +1,189 @@
+---
+---
+
+<section class="getintouch">
+  <div class="container getintouch__grid">
+    <!-- LEFT -->
+    <div class="getintouch__left">
+      <h2 class="getintouch__title">Get In Touch</h2>
+
+      <ul class="getintouch__info">
+        <li class="info__row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 22s7-6.21 7-12a7 7 0 10-14 0c0 5.79 7 12 7 12z" stroke="#dc2626" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="10" r="3" stroke="#dc2626" stroke-width="2" fill="none"/>
+          </svg>
+          <span>2101 Shannon Oxmoor Rd #107, Shannon, AL 35142, United States</span>
+        </li>
+        <li class="info__row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 012.08 4.2 2 2 0 014.06 2h3a2 2 0 012 1.72c.14 1.05.39 2.07.73 3.05a2 2 0 01-.45 2.11L8.09 10a16 16 0 006 6l1.12-1.25a2 2 0 012.11-.45c.98.34 2 .59 3.05.73A2 2 0 0122 16.92z" stroke="#dc2626" stroke-width="2"/>
+          </svg>
+          <a href="tel:12052365014">(205) 236-5014</a>
+        </li>
+      </ul>
+
+      <figure class="getintouch__figure">
+        <img
+          src="/images/chapmancustomer.jpg"
+          alt="Customer and plumber at kitchen sink"
+          width="720"
+          height="480"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+
+    <!-- RIGHT: FORM CARD -->
+    <aside class="getintouch__card">
+      <img
+        src="/images/chapman-logo.png"
+        alt="Chapman Plumbing"
+        class="card__logo"
+        width="170"
+        height="70"
+        loading="lazy"
+      />
+
+      <!-- ✅ Sends email via FormSubmit; replace with the real recipient email -->
+      <form class="form" method="POST" action="https://formsubmit.co/client@example.com" id="contactForm" novalidate>
+        <p class="form__error" id="formError" hidden>Kindly fill out all fields.</p>
+
+        <div class="form__row form__row--two">
+          <input type="text" name="firstName" placeholder="First Name" required />
+          <input type="text" name="lastName" placeholder="Last Name" required />
+        </div>
+
+        <div class="form__row form__row--two">
+          <input type="email" name="email" placeholder="Email" required />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone (digits only)"
+            inputmode="numeric"
+            pattern="^\d{7,15}$"
+            title="Digits only (7–15 numbers)"
+            maxlength="15"
+            required
+          />
+        </div>
+
+        <div class="form__row">
+          <input type="text" name="address" placeholder="Address" required />
+        </div>
+
+        <div class="form__row">
+          <textarea name="message" rows="5" placeholder="Tell us about why you're reaching out to us..." required></textarea>
+        </div>
+
+        <!-- FormSubmit options -->
+        <input type="hidden" name="_subject" value="New Inquiry — Chapman Plumbing" />
+        <input type="hidden" name="_captcha" value="false" />
+        <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you" /> -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="form__actions">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </aside>
+  </div>
+
+  <!-- Validation & digits-only logic -->
+  <script type="module">
+    const form  = document.getElementById('contactForm');
+    const err   = document.getElementById('formError');
+    const phone = form.querySelector('input[name="phone"]');
+
+    // Block non-digits while typing
+    phone.addEventListener('keydown', (e) => {
+      const allowed = ['Backspace','Delete','ArrowLeft','ArrowRight','Home','End','Tab'];
+      if (allowed.includes(e.key)) return;
+      if (!/^\d$/.test(e.key)) e.preventDefault();
+    });
+
+    // Clean pasted text & any stray chars
+    const sanitize = () => (phone.value = phone.value.replace(/\D/g, '').slice(0, 15));
+    phone.addEventListener('input', sanitize);
+    phone.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const t = (e.clipboardData || window.clipboardData).getData('text') || '';
+      const digits = t.replace(/\D/g, '').slice(0, 15);
+      const start = phone.selectionStart, end = phone.selectionEnd;
+      phone.setRangeText(digits, start, end, 'end');
+      sanitize();
+    });
+
+    // Show message if invalid
+    form.addEventListener('submit', (e) => {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        err.hidden = false;
+        form.querySelector(':invalid')?.focus();
+      } else {
+        err.hidden = true;
+      }
+    });
+  </script>
+</section>
+
+<style>
+:root{
+  --container-pad:16px;
+  --container-max:1200px;
+  --border:#e5e7eb;
+  --shadow:0 10px 25px rgba(0,0,0,.08);
+  --green:#007F1E;
+  --green-dark:#006618;
+}
+
+/* shared container */
+.container{ width:min(100% - (var(--container-pad)*2), var(--container-max)); margin-inline:auto; }
+
+/* Section */
+.getintouch{ position:relative; padding-block:2.5rem 4rem;
+  background:radial-gradient(1200px 400px at 20% 0%, rgba(0,0,0,.03), transparent 60%);
+}
+
+/* Layout */
+.getintouch__grid{ display:grid; grid-template-columns:1fr; gap:2rem; }
+@media (min-width:960px){ .getintouch__grid{ grid-template-columns: 1fr 520px; gap:2.5rem; } }
+
+/* Left */
+.getintouch__title{ margin:0 0 .75rem 0; }
+.getintouch__info{ list-style:none; padding:0; margin:0 0 1.25rem 0; display:grid; gap:.6rem; }
+.info__row{ display:flex; align-items:center; gap:.6rem; font-size:1.05rem; }
+.info__row a{ color:inherit; text-decoration:none; }
+.info__row a:hover{ text-decoration:underline; }
+
+.getintouch__figure{ margin:0; border-radius:10px; overflow:hidden; box-shadow:var(--shadow); background:#fff; }
+.getintouch__figure img{ width:100%; height:auto; display:block; }
+
+/* Right card + form */
+.getintouch__card{ background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow); padding:1.25rem; }
+@media (min-width:960px){ .getintouch__card{ padding:1.75rem; } }
+.card__logo{ display:block; margin-inline:auto; margin-bottom:1rem; height:auto; max-width:260px; }
+
+.form{ display:grid; gap:1rem; }
+.form__row{ display:grid; gap:1rem; }
+.form__row--two{ grid-template-columns:1fr; }
+@media (min-width:720px){ .form__row--two{ grid-template-columns:1fr 1fr; } }
+
+.form input, .form textarea{
+  width:100%; border:1px solid var(--border); border-radius:8px; padding:.8rem .9rem; outline:none; background:#fff;
+  box-shadow:inset 0 1px 0 rgba(0,0,0,.02);
+}
+.form input:focus, .form textarea:focus{ border-color:#c7d2fe; box-shadow:0 0 0 3px rgba(59,130,246,.15); }
+/* Show red borders when invalid */
+.form input:invalid, .form textarea:invalid{ border-color:rgb(244, 242, 242) }
+
+.form__error{ margin:0; padding:.5rem .75rem; border-radius:.5rem; background:#fee2e2; color:#b91c1c; font-weight:600; }
+
+/* Buttons */
+.form__actions{ margin-top:.5rem; }
+.btn{ display:inline-flex; align-items:center; justify-content:center; padding:.75rem 1.25rem; border-radius:.5rem; text-decoration:none; border:0;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease; font-weight:600; font-size:1rem; line-height:1.2; }
+.btn-primary{ background:var(--green); color:#fff; }
+.btn-primary:hover{ background:var(--green-dark); transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,127,30,.28); }
+.btn-primary:focus-visible{ outline:2px solid #27b94a; outline-offset:2px; }
+</style>

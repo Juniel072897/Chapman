@@ -1,0 +1,193 @@
+---
+// src/components/Rescom.astro
+
+// Replace with your actual images
+const residentialImg = '/images/kitchen.jpg';
+const commercialImg  = '/images/Commercial-Plumbing.jpg';
+const specialtyImg   = '/images/Hydro-Jetting-Drain-Cleaning.jpg';
+const drainImg       = '/images/kitchen.jpg';
+const waterImg       = '/images/Hydro-Jetting-Drain-Cleaning.jpg';
+const emergencyImg   = '/images/Commercial-Plumbing.jpg';
+---
+
+<section class="rescom">
+  <div class="container">
+    <!-- Row 1 -->
+    <div class="rescom__row">
+      <figure class="rescom__media">
+        <img src={residentialImg} alt="Residential plumbing – kitchen sink" loading="lazy" decoding="async" />
+      </figure>
+      <div class="rescom__content">
+        <h3 class="rescom__title">Residential Plumbing</h3>
+        <p>
+          You cannot avoid emergencies that require a plumber at home, whether your sewer needs repair or replacement, your faucet needs to be replaced, or your pipes are clogged, chances are you’ll need to call an experienced professional to give you an estimate and help you fix the problem. We offer External Excavation, Interior Access Excavation, Pipe Rerouting, Combination Methods, and more depending on what’s best for you.
+        </p>
+        <a href="/services/residential-plumbing" class="btn btn--green">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="rescom__row rescom__row--reverse">
+      <div class="rescom__content">
+        <h3 class="rescom__title">Commercial Plumber</h3>
+        <p>
+          Equipped with top-of-the-line materials and years of experience in the field, we offer you a wide range of unparalleled service to keep up with your commercial plumber needs. We provide a huge array of services to cater for your business establishments, restaurants, work spaces, and many more.
+        </p>
+        <a href="/services/commercial-plumbing" class="btn btn--green">Learn More</a>
+      </div>
+      <figure class="rescom__media">
+        <img src={commercialImg} alt="Commercial plumbing – restaurant interior" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="rescom__row">
+      <figure class="rescom__media">
+        <img src={specialtyImg} alt="Specialty plumbing services" loading="lazy" decoding="async" />
+      </figure>
+      <div class="rescom__content">
+        <h3 class="rescom__title">Hydro Jetting & Drain Cleaning</h3>
+        <p>
+          We offer the best way to remove blockages and clean up your waste water pipes in a flush. This process is the safest way with only using highly pressurized water—no chemicals needed—which cannot harm your pipes and keep the water freely flowing for your long term plumbing convenience.
+        </p>
+        <a href="/services/specialty" class="btn btn--green">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="rescom__row rescom__row--reverse">
+      <div class="rescom__content">
+        <h3 class="rescom__title">Plumbing Repairs</h3>
+        <p>
+         You cannot avoid plumbing emergencies at home, whether your sewer needs repair or replacement, your faucet needs to be replaced, or your pipes are clogged, chances are you’ll need to call an experienced professional to give you an estimate and help you fix the problem. We offer External Excavation, Interior Access Excavation, Pipe Rerouting, Combination Methods, and more depending on what’s best for you.
+        </p>
+        <a href="/services/drain-cleaning" class="btn btn--green">Learn More</a>
+      </div>
+      <figure class="rescom__media">
+        <img src={drainImg} alt="Drain cleaning service" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="rescom__row">
+      <figure class="rescom__media">
+        <img src={waterImg} alt="Water heater service" loading="lazy" decoding="async" />
+      </figure>
+      <div class="rescom__content">
+        <h3 class="rescom__title">Installation by Plumber</h3>
+        <p>
+          Equipped with top-of-the-line materials and years of experience in the field, we offer you a wide range of unparalleled service to keep up with your commercial plumbing needs. We provide a huge array of services to cater for your business establishments, restaurants, work spaces, and many more.
+        </p>
+        <a href="/services/water-heaters" class="btn btn--green">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Row 6 -->
+    <div class="rescom__row rescom__row--reverse">
+      <div class="rescom__content">
+        <h3 class="rescom__title">Specialty</h3>
+        <p>
+          Equipped with top-of-the-line materials and years of experience in the field, we offer you a wide range of unparalleled service to keep up with your commercial plumbing needs. We provide a huge array of services to cater for your business establishments, restaurants, work spaces, and many more.
+        </p>
+        <a href="/services/emergency" class="btn btn--green">Learn More</a>
+      </div>
+      <figure class="rescom__media">
+        <img src={emergencyImg} alt="Emergency plumbing service" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --container-max: 1360px;
+    --container-pad: 16px;
+    --green: #177a3f;
+    --green-hover: #0f6a34;
+    --card-radius: 12px;
+  }
+
+  .container {
+    width: min(100% - (var(--container-pad) * 2), var(--container-max));
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  .rescom {
+    padding-block: 40px 56px;
+  }
+
+  .rescom__row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    margin-block: 32px 72px;
+  }
+  .rescom__row--reverse {
+    grid-template-columns: 1fr 1.1fr;
+  }
+
+  .rescom__media {
+    margin: 0;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    background: #f7f7f7;
+    box-shadow: 0 18px 45px rgba(0,0,0,.12), 0 6px 18px rgba(0,0,0,.06);
+  }
+  .rescom__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+  }
+
+  .rescom__content {
+    display: grid;
+    gap: 14px;
+  }
+  .rescom__title {
+    margin: 0 0 6px 0;
+  }
+
+  /* Buttons (compact size) */
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border: 0;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    width: auto;
+    min-width: 0;
+    max-width: max-content;
+  }
+ 
+.btn--green {
+  background: var(--green);
+  color: #fff;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn--green:hover {
+  background: #3fb74c;   /* hover color */
+  color: #fff;
+  transform: translateY(-1px); /* optional subtle lift */
+}
+
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .rescom__row,
+    .rescom__row--reverse {
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-block: 22px 48px;
+    }
+    .rescom__row--reverse .rescom__content { order: 2; }
+    .rescom__row--reverse .rescom__media   { order: 1; }
+  }
+</style>

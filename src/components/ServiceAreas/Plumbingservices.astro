@@ -1,0 +1,162 @@
+---
+const leftColumn = [
+  "Toilets",
+  "Bathrooms",
+  "Sinks",
+  "Water Heaters",
+  "Main Sewer Lines",
+  "Laundry Rooms",
+  "Full Service Plumbing",
+  "Drain Cleaning",
+];
+
+const rightColumn = [
+  "Leaks Detected & Repaired",
+  "Code Violation Corrections",
+  "Fixture Installations",
+  "Sump Pumps Installed & Repaired",
+  "Water Heaters – Standard",
+  "Water Heaters – Tankless",
+  "Water Lines Installed & Repaired",
+  "Floor Drains & Laundries",
+];
+
+const phone = "(205) 236-5014";
+const phoneHref = "tel:2052365014";
+---
+
+<section class="ps">
+  <div class="container ps__inner">
+    <!-- LEFT: big tools image -->
+    <div class="ps__media">
+      <img src="/images/Tools.webp" alt="Plumbing tools" decoding="async" loading="lazy" />
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="ps__content">
+      <h2 class="ps__title">Our Plumbing Services:</h2>
+
+      <div class="ps__lists">
+        <ul class="ps__list">
+          {leftColumn.map(item => (
+            <li>
+              <span class="plumbing__icon" aria-hidden="true">🔧</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <ul class="ps__list">
+          {rightColumn.map(item => (
+            <li>
+              <span class="plumbing__icon" aria-hidden="true">🔧</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="ps__cta">
+        <a class="btn btn-success" href="/services">Explore More Plumbing Services</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom red alert bar -->
+  <div class="ps__alert">
+    <div class="container ps__alertInner">
+      <strong>24-Hour Emergency Plumber!</strong>
+
+      <a class="ps__call" href={phoneHref} aria-label={`Call ${phone}`}>
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.13.98.35 1.93.66 2.84a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.24-1.24a2 2 0 0 1 2.11-.45c.91.31 1.86.53 2.84.66A2 2 0 0 1 22 16.92Z" fill="currentColor"/>
+        </svg>
+        {phone}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ps { background:#f5f5f5; }
+
+  .container{
+    width: min(100% - (var(--container-pad,16px)*2), var(--container-max,1200px));
+    margin-inline:auto;
+    padding-inline: var(--container-pad,16px);
+  }
+
+  .ps__inner{
+    display:grid;
+    grid-template-columns: 1fr;
+    align-items:center;
+    gap: clamp(1.25rem, 3vw, 2.25rem);
+    padding-block: clamp(1.75rem, 4vw, 2.5rem);
+  }
+  @media (min-width: 980px){
+    .ps__inner{ grid-template-columns: .95fr 1.05fr; }
+  }
+
+  .ps__media{
+    display:flex; align-items:center; justify-content:center;
+  }
+  .ps__media img{
+    max-width: 400px; width:100%; height:auto; display:block;
+    filter: drop-shadow(0 10px 24px rgba(0,0,0,.08));
+  }
+
+  .ps__title{
+    margin: 0 0 .75rem 0;
+    font-weight: 800;
+    color: #d61f1f;
+  }
+
+  .ps__lists{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 1rem 2rem;
+    margin-bottom: 1.25rem;
+  }
+  @media (min-width: 720px){
+    .ps__lists{ grid-template-columns: 1fr 1fr; }
+  }
+
+  .ps__list{
+    list-style:none; padding:0; margin:0;
+    display:grid; gap:.5rem;
+  }
+  .ps__list li{
+    display:flex; align-items:center; gap:.5rem;
+    color:#111;
+    font-weight:500;
+  }
+
+  /* emoji-based wrench icon */
+  .plumbing__icon{
+    font-size: 1.1rem;
+    color:#d61f1f;
+    line-height:1;
+  }
+
+  .ps__cta{ margin-top:.5rem; }
+
+  .ps__alert{
+    background:#c82323;
+    color:#fff;
+    margin-top: clamp(1.25rem, 3vw, 1.75rem);
+  }
+  .ps__alertInner{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; padding-block: .9rem;
+  }
+  .ps__alert strong{ font-weight:800; font-size: 30px;}
+
+  .ps__call{
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:#1b7f3a; color:#fff; text-decoration:none;
+    padding:.55rem .9rem; border-radius:.35rem;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+    white-space:nowrap;
+  }
+  .ps__call:hover{ filter: brightness(1.05); }
+</style>
